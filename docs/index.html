@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    html, body {
+      margin: 0;
+      overflow: hidden;
+      height: 100%;
+    }
+  </style>
+  <title>Rust WebAssembly WebGL</title>
+</head>
+<body>
+  <canvas id="canvas"></canvas>
+  <script type="module">
+    import init from './js/rust_webgl.js';
+
+    (async () => {
+      await init('./js/rust_webgl_bg.wasm');
+    })();
+  </script>
+</body>
+</html>

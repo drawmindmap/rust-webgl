@@ -1,0 +1,80 @@
+{
+  "name": "rust_webgl_webassembly",
+  "version": "1.0.0",
+  "description": "Rust WebGL WebAssembly training",
+  "main": "index.js",
+  "scripts": {
+    "start": "hs ./docs -p 8080 -s -c-1 -o",
+    "build": "wasm-pack build rust_webgl/ --target web && npm run copy",
+    "copy" : "cp rust_webgl/pkg/rust_webgl.js docs/js/ && cp rust_webgl/pkg/rust_webgl_bg.wasm docs/js/"
+  },
+  "keywords": [
+    "WebAssembly"
+  ],
+  "author": "",
+  "license": "ISC",
+  "babel": {
+    "presets": [
+      [
+        "@babel/preset-env",
+        {
+          "targets": {
+            "node": "current"
+          }
+        }
+      ]
+    ]
+  },
+  "eslintConfig": {
+    "env": {
+      "browser": true,
+      "es6": true,
+      "node": true,
+      "jest": true
+    },
+    "extends": "airbnb-base",
+    "plugins": [
+      "html"
+    ],
+    "globals": {},
+    "parserOptions": {
+      "ecmaVersion": 2019
+    },
+    "rules": {
+      "no-param-reassign": [
+        "error",
+        {
+          "props": false
+        }
+      ],
+      "no-unused-vars": [
+        "error",
+        {
+          "args": "none"
+        }
+      ],
+      "no-bitwise": 0,
+      "no-console": 0,
+      "no-underscore-dangle": 0,
+      "max-len": 0,
+      "import/extensions": 0
+    }
+  },
+  "eslintIgnore": [
+    "docs/js/**/*.*",
+    "coverage/**/*.*"
+  ],
+  "devDependencies": {
+    "@babel/core": "^7.4.4",
+    "@babel/preset-env": "^7.4.4",
+    "eslint": "^5.16.0",
+    "eslint-config-airbnb-base": "^13.1.0",
+    "eslint-plugin-html": "^5.0.5",
+    "eslint-plugin-import": "^2.17.2",
+    "http-server": "^0.11.1"
+  },
+  "dependencies": {
+    "dat.gui": "^0.7.6",
+    "gl-matrix": "^3.0.0"
+  }
+}
